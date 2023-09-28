@@ -4,11 +4,7 @@ export const navLinks = [
     url: '/',
   },
   {
-    name: 'Login',
-    url: 'login',
-  },
-  {
-    name: 'Register',
-    url: 'register',
+    name: 'About',
+    url: 'about',
   },
 ];
