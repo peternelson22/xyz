@@ -1,7 +1,20 @@
 import { Link } from 'react-router-dom';
-import { products } from '../api';
+import { useEffect, useState } from 'react';
+import { products_url as url } from '../utils/constants';
 
 const Products = () => {
+  const [products, setProducts] = useState<Products[]>([]);
+
+  const fetchProducts = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    setProducts(data);
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <section className='align-element grid grid-cols-3 gap-5 mt-6'>
       {products.map((product) => {

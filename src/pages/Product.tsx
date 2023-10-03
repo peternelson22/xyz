@@ -1,18 +1,27 @@
 import { useParams } from 'react-router-dom';
-import { products } from '../api';
+import { single_product_url as url } from '../utils/constants';
+import { useEffect, useState } from 'react';
+import ProductImages from '../components/ProductImages';
 
 const Product = () => {
   const { id } = useParams();
-  const singleProduct = products.find((p) => p.id === id);
+
+  const [singleProduct, setSingleProduct] = useState<Product>();
+
+  const fetchSingleProduct = async () => {
+    const response = await fetch(`${url}${id}`);
+    const data = await response.json();
+    setSingleProduct(data);
+  };
+  useEffect(() => {
+    fetchSingleProduct();
+  }, [id]);
+
   return (
     <section className='align-element mt-16 min-h-[calc(100vh-4rem)]'>
       {
         <div className='flex items-center space-x-8'>
-          <img
-            src={singleProduct?.image}
-            alt={singleProduct?.name}
-            className='h-52 w-52 md:h-96 md:w-96 object-cover'
-          />
+          <ProductImages images={singleProduct?.images} />
           <div className='text-lg capitalize'>
             <h1 className='text-2xl text-green-400 font-bold uppercase'>
               {singleProduct?.name}
