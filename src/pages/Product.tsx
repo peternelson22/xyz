@@ -11,6 +11,8 @@ const Product = () => {
   const fetchSingleProduct = async () => {
     const response = await fetch(`${url}${id}`);
     const data = await response.json();
+    console.log(data);
+
     setSingleProduct(data);
   };
   useEffect(() => {
@@ -18,30 +20,28 @@ const Product = () => {
   }, [id]);
 
   return (
-    <section className='align-element mt-16 min-h-[calc(100vh-4rem)]'>
-      {
-        <div className='flex items-center space-x-8'>
-          <ProductImages images={singleProduct?.images} />
-          <div className='text-lg capitalize'>
-            <h1 className='text-2xl text-green-400 font-bold uppercase'>
-              {singleProduct?.name}
-            </h1>
-            <h3 className='text-red-300'>${singleProduct?.price}</h3>
-            <p className='my-3'>
-              <span className='font-bold text-gray-500'>Category: </span>
-              {singleProduct?.category}
-            </p>
-            <p className='my-3'>
-              <span className='font-bold text-gray-500'>Comapany:</span>{' '}
-              {singleProduct?.company}
-            </p>
-            <p className='my-3'>
-              <span className='font-bold text-gray-500'>Description: </span>
-              {singleProduct?.description}
-            </p>
-          </div>
+    <section className='align-element mt-16 min-h-[calc(100vh-10rem)]'>
+      <div className='flex items-center space-x-8'>
+        <ProductImages images={singleProduct?.images} />
+        <div className='text-lg capitalize'>
+          <h1 className='text-2xl text-green-400 font-bold uppercase'>
+            {singleProduct?.name}
+          </h1>
+          <h3 className='text-red-300'>${singleProduct?.price}</h3>
+          <p className='my-3'>
+            <span className='font-bold text-gray-500'>Category: </span>
+            {singleProduct?.category}
+          </p>
+          <p className='my-3'>
+            <span className='font-bold text-gray-500'>Comapany:</span>{' '}
+            {singleProduct?.company}
+          </p>
+          <p className='my-3'>
+            <span className='font-bold text-gray-500'>Description: </span>
+            {singleProduct?.description}
+          </p>
         </div>
-      }
+      </div>
     </section>
   );
 };

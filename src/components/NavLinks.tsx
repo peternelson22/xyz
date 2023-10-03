@@ -4,7 +4,7 @@ import { navLinks } from '../data';
 const NavLinks = () => {
   return (
     <>
-      <div className='flex ml-4 gap-x-3'>
+      <div className='flex ml-4 gap-x-3 text-gray-700 text-base font-semibold'>
         {navLinks.map((link, index) => (
           <NavLink key={index} to={link.url}>
             {link.name}

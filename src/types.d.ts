@@ -39,13 +39,7 @@ interface Product {
 }
 
 interface ThumbNails {
-  full: ThumbNailsDetails;
-  large: ThumbNailsDetails;
-  small: ThumbNailsDetails;
-}
-
-interface ThumbNailsDetails {
-  height: number;
-  width: number;
-  url: string;
+  full: { height: number; width: number; url: string };
+  large: { height: number; width: number; url: string };
+  small: { height: number; width: number; url: string };
 }
