@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import NavLinks from './NavLinks';
+import { useProductContext } from '../context/product_context';
+import { FaBars } from 'react-icons/fa';
 
 const Navbar = () => {
+  const { openSidebar } = useProductContext() as any;
+
   return (
     <nav className='bg-green-300 h-16'>
       <div className='align-element flex items-center justify-between'>
@@ -19,10 +23,14 @@ const Navbar = () => {
             placeholder='Search...'
             className='bg-green-200 px-4 py-1 focus:ring-0 focus:border-transparent outline-none rounded-md text-gray-700'
           />
-          <button type='submit' hidden>
-            submit
-          </button>
         </div>
+        <button
+          onClick={openSidebar}
+          type='button'
+          className='md:hidden bg-transparent border-transparent text-blue-400 cursor-pointer text-3xl'
+        >
+          <FaBars />
+        </button>
       </div>
     </nav>
   );

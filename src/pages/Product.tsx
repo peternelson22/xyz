@@ -20,11 +20,11 @@ const Product = () => {
   }, [id]);
 
   return (
-    <section className='align-element mt-16 min-h-[calc(100vh-10rem)]'>
-      <div className='flex items-center space-x-8'>
+    <section className='align-element mt-16 p-3 min-h-[calc(100vh-10rem)]'>
+      <div className='sm:flex items-center justify-center space-x-8'>
         <ProductImages images={singleProduct?.images} />
         <div className='text-lg capitalize'>
-          <h1 className='text-2xl text-green-400 font-bold uppercase'>
+          <h1 className='text-base sm:text-2xl text-green-400 font-bold uppercase'>
             {singleProduct?.name}
           </h1>
           <h3 className='text-red-300'>${singleProduct?.price}</h3>
@@ -36,7 +36,7 @@ const Product = () => {
             <span className='font-bold text-gray-500'>Comapany:</span>{' '}
             {singleProduct?.company}
           </p>
-          <p className='my-3'>
+          <p className='my-3 line-clamp-3'>
             <span className='font-bold text-gray-500'>Description: </span>
             {singleProduct?.description}
           </p>
