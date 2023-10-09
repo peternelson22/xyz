@@ -11,7 +11,6 @@ const Product = () => {
   const fetchSingleProduct = async () => {
     const response = await fetch(`${url}${id}`);
     const data = await response.json();
-    console.log(data);
 
     setSingleProduct(data);
   };
@@ -20,7 +19,7 @@ const Product = () => {
   }, [id]);
 
   return (
-    <section className='align-element mt-16 p-3 min-h-[calc(100vh-10rem)]'>
+    <section className='align-element mt-16 p-3 min-h-[calc(100vh-11rem)]'>
       <div className='sm:flex items-center justify-center space-x-8'>
         <ProductImages images={singleProduct?.images} />
         <div className='text-lg capitalize'>

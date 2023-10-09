@@ -17,11 +17,11 @@ const Navbar = () => {
           />
         </Link>
         <NavLinks />
-        <div className='outline-none'>
+        <div className=''>
           <input
             type='text'
             placeholder='Search...'
-            className='bg-green-200 px-4 py-1 focus:ring-0 focus:border-transparent outline-none rounded-md text-gray-700'
+            className='bg-green-200 px-4 py-1 w-44 sm:w-full focus:ring-0 focus:border-transparent outline-none rounded-md text-gray-700'
           />
         </div>
         <button

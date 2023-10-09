@@ -1,26 +1,19 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { products_url as url } from '../utils/constants';
+import { useProductContext } from '../context/product_context';
+import Loading from '../components/Loading';
 
 const Products = () => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const { products } = useProductContext() as ProductsState;
 
-  const fetchProducts = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    setProducts(data);
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
+  if (products.length < 1) {
+    return <Loading />;
+  }
   return (
     <section className='mt-6'>
       <h1 className='text-center font-semibold text-4xl'>Our Products</h1>
 
       <div className='align-element grid grid-cols-3 gap-4 mb-2'>
-        {products.map((product) => {
+        {products.map((product: Products) => {
           const { id, image, price, description, name } = product;
           return (
             <Link to={id} key={id} className='shadow-md p-2 hover:shadow-lg'>

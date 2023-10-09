@@ -3,6 +3,10 @@ interface UserLogin {
   password: string;
 }
 
+interface ProductsState {
+  products: Products[];
+}
+
 interface Products {
   category: string;
   colors: string[];
@@ -36,6 +40,18 @@ interface Product {
   reviews: number;
   stars: number;
   stock: number;
+}
+
+interface AppState {
+  isSidebarOpen: boolean;
+  productsLoading: boolean;
+  productsError: boolean;
+  products: Products[] | undefined;
+}
+
+interface AppAction {
+  type: string;
+  payload?: Products[];
 }
 
 interface ThumbNails {
