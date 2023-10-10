@@ -1,3 +1,4 @@
+import { useReducer, useState } from 'react';
 import Featured from '../components/Featured';
 import Landing from '../components/Landing';
 

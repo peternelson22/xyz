@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { initialState, reducer } from '../reducer/product_reducer';
 import { products_url as url } from '../utils/constants';
 import {
@@ -11,7 +11,11 @@ import {
 
 const ProductsContext = createContext({});
 
-export const ProductProvider = ({ children }: any) => {
+export const ProductProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const openSidebar = () => {
