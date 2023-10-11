@@ -4,13 +4,19 @@ import {
   PRODUCTS_ERROR,
   PRODUCTS_LOADING,
   PRODUCTS_SUCCESS,
-} from '../actions';
+  PRODUCT_ERROR,
+  PRODUCT_LOADING,
+  PRODUCT_SUCCESS,
+} from '../utils/actions';
 
 export const initialState: AppState = {
   isSidebarOpen: false,
   productsLoading: false,
   productsError: false,
   products: [],
+  productLoading: false,
+  productError: false,
+  product: [],
 };
 
 export const reducer = (state: AppState, action: AppAction): AppState => {
@@ -27,11 +33,21 @@ export const reducer = (state: AppState, action: AppAction): AppState => {
   }
 
   if (action.type === PRODUCTS_SUCCESS) {
-    return { ...state, products: action.payload };
+    return { ...state, productsLoading: false, products: action.payload };
   }
 
   if (action.type === PRODUCTS_ERROR) {
-    return { ...state, productsError: true };
+    return { ...state, productsLoading: false, productsError: true };
+  }
+
+  if (action.type === PRODUCT_LOADING) {
+    return { ...state, productLoading: true };
+  }
+  if (action.type === PRODUCT_SUCCESS) {
+    return { ...state, productLoading: false, product: action.payload };
+  }
+  if (action.type === PRODUCT_ERROR) {
+    return { ...state, productLoading: false, productError: true };
   }
 
   throw new Error('There is no action matching');

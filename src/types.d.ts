@@ -47,6 +47,9 @@ interface AppState {
   productsLoading: boolean;
   productsError: boolean;
   products: Products[] | undefined;
+  productLoading: boolean;
+  productError: boolean;
+  product: Products[] | undefined;
 }
 
 interface AppAction {

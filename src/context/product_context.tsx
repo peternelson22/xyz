@@ -7,7 +7,10 @@ import {
   PRODUCTS_ERROR,
   PRODUCTS_LOADING,
   PRODUCTS_SUCCESS,
-} from '../actions';
+  PRODUCT_ERROR,
+  PRODUCT_LOADING,
+  PRODUCT_SUCCESS,
+} from '../utils/actions';
 
 const ProductsContext = createContext({});
 
@@ -36,12 +39,25 @@ export const ProductProvider = ({
     }
   };
 
+  const fetchSingleProduct = async (url: string) => {
+    dispatch({ type: PRODUCT_LOADING });
+    try {
+      const res = await fetch(url);
+      const product = await res.json();
+      dispatch({ type: PRODUCT_SUCCESS, payload: product });
+    } catch (error) {
+      dispatch({ type: PRODUCT_ERROR });
+    }
+  };
+
   useEffect(() => {
     fetchProducts(url);
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <ProductsContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+    >
       {children}
     </ProductsContext.Provider>
   );
