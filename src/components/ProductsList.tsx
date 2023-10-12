@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../utils/helper';
 
 const ProductsList = ({ products }: { products: Products[] }) => {
   return (
@@ -20,7 +21,7 @@ const ProductsList = ({ products }: { products: Products[] }) => {
                   {name}
                 </h3>
                 <p className='text-red-200 font-bold text-xs sm:text-sm'>
-                  ${price}
+                  {formatPrice(price)}
                 </p>
               </div>
               <p className='truncate text-sm hidden md:block'>{description}</p>

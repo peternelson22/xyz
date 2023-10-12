@@ -5,6 +5,7 @@ import ProductImages from '../components/ProductImages';
 import { useProductContext } from '../context/product_context';
 import Loading from '../components/Loading';
 import GeneralError from '../components/GeneralError';
+import { formatPrice } from '../utils/helper';
 
 const Product = () => {
   const { id } = useParams();
@@ -35,7 +36,7 @@ const Product = () => {
           <h1 className='text-base sm:text-2xl text-green-400 font-bold uppercase'>
             {name}
           </h1>
-          <h3 className='text-red-300'>${price}</h3>
+          <h3 className='text-red-300'>{formatPrice(price)}</h3>
           <p className='my-3'>
             <span className='font-bold text-gray-500'>Category: </span>
             {category}

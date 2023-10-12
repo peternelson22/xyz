@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useProductContext } from '../context/product_context';
+import { formatPrice } from '../utils/helper';
 
 const Featured = () => {
   const { products }: { products: Products[] } =
@@ -14,7 +15,9 @@ const Featured = () => {
           />
           <div className='block sm:flex items-center justify-between my-2 capitalize font-semibold'>
             <p className='text-sm sm:text-base'>{p.name}</p>
-            <p className='text-red-400 font-normal sm:font-bold'>${p.price}</p>
+            <p className='text-red-400 font-normal sm:font-bold'>
+              {formatPrice(p.price)}
+            </p>
           </div>
         </Link>
       ))}
